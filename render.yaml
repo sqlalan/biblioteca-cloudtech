@@ -1,0 +1,10 @@
+# Configuracao para publicar a aplicacao no Render (https://render.com)
+# usando o Dockerfile da raiz do repositorio, no plano gratuito.
+services:
+  - type: web
+    name: biblioteca-cloudtech
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    autoDeploy: true
