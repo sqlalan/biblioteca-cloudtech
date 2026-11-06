@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: biblioteca-cloudtech
+  jackson:
+    serialization:
+      indent-output: true
+
+server:
+  # Usa a variavel PORT quando existir (ex.: Render, Railway); senao, 8080
+  port: ${PORT:8080}
