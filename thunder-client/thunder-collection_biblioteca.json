@@ -1,0 +1,268 @@
+{
+  "clientName": "Thunder Client",
+  "collectionName": "Biblioteca - CloudTech",
+  "collectionId": "9c953915-e8a8-4170-a84b-42c860338725",
+  "dateExported": "2026-11-06T00:54:18.361Z",
+  "version": "1.2",
+  "folders": [],
+  "requests": [
+    {
+      "_id": "67c39f38-6b52-4dc1-a3b3-0a8ef89031d2",
+      "colId": "9c953915-e8a8-4170-a84b-42c860338725",
+      "containerId": "",
+      "name": "01 - Página inicial",
+      "url": "http://localhost:8080/",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2026-11-06T00:54:18.361Z",
+      "modified": "2026-11-06T00:54:18.361Z",
+      "headers": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "json-query",
+          "custom": "json.mensagem",
+          "action": "equal",
+          "value": "Bem-vindo ao sistema de gerenciamento da Biblioteca CloudTech Solutions"
+        }
+      ]
+    },
+    {
+      "_id": "360e12ba-8022-4d9a-a208-9177435259fb",
+      "colId": "9c953915-e8a8-4170-a84b-42c860338725",
+      "containerId": "",
+      "name": "02 - Listar livros",
+      "url": "http://localhost:8080/livros",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2026-11-06T00:54:18.361Z",
+      "modified": "2026-11-06T00:54:18.361Z",
+      "headers": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "94e5fa2e-e507-4fcf-8c36-7c4ec563fda5",
+      "colId": "9c953915-e8a8-4170-a84b-42c860338725",
+      "containerId": "",
+      "name": "03 - Listar livros disponíveis",
+      "url": "http://localhost:8080/livros?status=Dispon%C3%ADvel",
+      "method": "GET",
+      "sortNum": 30000,
+      "created": "2026-11-06T00:54:18.361Z",
+      "modified": "2026-11-06T00:54:18.361Z",
+      "headers": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "_id": "5839bdcf-f53d-4576-9c39-8d94ea3d7e6f",
+      "colId": "9c953915-e8a8-4170-a84b-42c860338725",
+      "containerId": "",
+      "name": "04 - Consultar livro por id",
+      "url": "http://localhost:8080/livros/2",
+      "method": "GET",
+      "sortNum": 40000,
+      "created": "2026-11-06T00:54:18.361Z",
+      "modified": "2026-11-06T00:54:18.361Z",
+      "headers": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "json-query",
+          "custom": "json.titulo",
+          "action": "equal",
+          "value": "Redes de Computadores"
+        }
+      ]
+    },
+    {
+      "_id": "e42ac4b3-533d-48a7-ae0f-1e90a07d7991",
+      "colId": "9c953915-e8a8-4170-a84b-42c860338725",
+      "containerId": "",
+      "name": "05 - Cadastrar livro",
+      "url": "http://localhost:8080/livros/cadastrar",
+      "method": "POST",
+      "sortNum": 50000,
+      "created": "2026-11-06T00:54:18.361Z",
+      "modified": "2026-11-06T00:54:18.361Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "201"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"titulo\": \"Banco de Dados para Iniciantes\",\n  \"autor\": \"Maria Souza\",\n  \"editora\": \"EduTech\",\n  \"ano\": 2023,\n  \"categoria\": \"Informática\",\n  \"status\": \"Disponível\"\n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "be752e88-8b60-422d-812b-8ab6404362b5",
+      "colId": "9c953915-e8a8-4170-a84b-42c860338725",
+      "containerId": "",
+      "name": "06 - Cadastrar livro inválido (400)",
+      "url": "http://localhost:8080/livros/cadastrar",
+      "method": "POST",
+      "sortNum": 60000,
+      "created": "2026-11-06T00:54:18.361Z",
+      "modified": "2026-11-06T00:54:18.361Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "400"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"titulo\": \"\",\n  \"autor\": \"Maria Souza\",\n  \"ano\": 3000,\n  \"status\": \"Perdido\"\n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "ac75af93-849e-4174-b6f1-b41aac8f88d5",
+      "colId": "9c953915-e8a8-4170-a84b-42c860338725",
+      "containerId": "",
+      "name": "07 - Alterar livro",
+      "url": "http://localhost:8080/livros/alterar/4",
+      "method": "PUT",
+      "sortNum": 70000,
+      "created": "2026-11-06T00:54:18.361Z",
+      "modified": "2026-11-06T00:54:18.361Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        },
+        {
+          "type": "json-query",
+          "custom": "json.titulo",
+          "action": "equal",
+          "value": "Banco de Dados Essencial"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"titulo\": \"Banco de Dados Essencial\",\n  \"autor\": \"Maria Souza\",\n  \"editora\": \"EduTech\",\n  \"ano\": 2024,\n  \"categoria\": \"Banco de Dados\",\n  \"status\": \"Emprestado\"\n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "0cee52e4-ed5b-4fb3-9208-8fd6fef06664",
+      "colId": "9c953915-e8a8-4170-a84b-42c860338725",
+      "containerId": "",
+      "name": "08 - Alterar livro inexistente (404)",
+      "url": "http://localhost:8080/livros/alterar/999",
+      "method": "PUT",
+      "sortNum": 80000,
+      "created": "2026-11-06T00:54:18.361Z",
+      "modified": "2026-11-06T00:54:18.361Z",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "404"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"titulo\": \"X\",\n  \"autor\": \"Y\",\n  \"editora\": \"Z\",\n  \"ano\": 2020,\n  \"categoria\": \"Teste\",\n  \"status\": \"Disponível\"\n}",
+        "form": []
+      }
+    },
+    {
+      "_id": "58df8e35-2efc-4a65-86c6-1fdecd9215cb",
+      "colId": "9c953915-e8a8-4170-a84b-42c860338725",
+      "containerId": "",
+      "name": "09 - Livro inexistente (404)",
+      "url": "http://localhost:8080/livros/999",
+      "method": "GET",
+      "sortNum": 90000,
+      "created": "2026-11-06T00:54:18.361Z",
+      "modified": "2026-11-06T00:54:18.361Z",
+      "headers": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "404"
+        }
+      ]
+    },
+    {
+      "_id": "be63983e-6b1f-4ab0-b4b3-fd7e35f4336c",
+      "colId": "9c953915-e8a8-4170-a84b-42c860338725",
+      "containerId": "",
+      "name": "10 - Documentação dos endpoints",
+      "url": "http://localhost:8080/documentacao",
+      "method": "GET",
+      "sortNum": 100000,
+      "created": "2026-11-06T00:54:18.361Z",
+      "modified": "2026-11-06T00:54:18.361Z",
+      "headers": [],
+      "tests": [
+        {
+          "type": "res-code",
+          "custom": "",
+          "action": "equal",
+          "value": "200"
+        }
+      ]
+    }
+  ]
+}
