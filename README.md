@@ -110,7 +110,7 @@ biblioteca-cloudtech/
 ├── src/test/java/...  # testes unitários e de integração
 ├── thunder-client/    # coleção do Thunder Client
 ├── Dockerfile
-├── render.yaml        # publicação no Render
+├── render.yaml        # publicação alternativa no Render
 └── .github/workflows/pipeline.yml
 ```
 
@@ -154,13 +154,26 @@ O workflow `.github/workflows/pipeline.yml` roda a cada push e a cada pull reque
 
 ## Publicação na web
 
-O repositório inclui um `render.yaml` para publicar no [Render](https://render.com) a partir do Dockerfile:
+A aplicação está publicada na [Railway](https://railway.com):
 
-1. No Render, acesse **New → Blueprint** e conecte este repositório do GitHub.
-2. O Render lê o `render.yaml`, constrói a imagem e publica a aplicação em uma URL `https://biblioteca-cloudtech-xxxx.onrender.com`.
-3. Com `autoDeploy`, cada push na `main` gera uma nova publicação.
+**https://biblioteca-cloudtech-production.up.railway.app**
 
-A aplicação usa a porta definida na variável `PORT`, que o Render configura automaticamente.
+| Endpoint publicado | Link |
+|---|---|
+| Página inicial | https://biblioteca-cloudtech-production.up.railway.app/ |
+| Livros | https://biblioteca-cloudtech-production.up.railway.app/livros |
+| Documentação | https://biblioteca-cloudtech-production.up.railway.app/documentacao |
+
+Como foi feita a publicação:
+
+1. Na Railway, acesse **New Project → Deploy from GitHub repo** e selecione este repositório.
+2. A Railway encontra o `Dockerfile` na raiz, constrói a imagem e sobe o container.
+3. Em **Settings → Networking → Generate Domain**, gere o domínio público apontando para a porta `8080`.
+4. Cada push na `main` gera uma nova publicação automaticamente.
+
+A aplicação usa a porta definida na variável `PORT` (padrão `8080`), que a Railway configura automaticamente. Os dados ficam em memória, então a cada nova publicação o acervo volta aos três livros de exemplo.
+
+O repositório também tem um `render.yaml`, caso prefira publicar no [Render](https://render.com) (**New → Blueprint**).
 
 ## Branches
 
@@ -169,5 +182,5 @@ A aplicação usa a porta definida na variável `PORT`, que o Render configura a
 | `feature/livros` | Consulta, cadastro e alteração de livros |
 | `feature/documentacao` | Página inicial e endpoint `/documentacao` |
 | `feature/testes` | Testes automatizados e coleção do Thunder Client |
-| `feature/docker` | Dockerfile e configuração do Render |
+| `feature/docker` | Dockerfile e configuração de publicação |
 | `feature/pipeline-cicd` | Pipeline do GitHub Actions |
