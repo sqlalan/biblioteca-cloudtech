@@ -169,7 +169,7 @@ Como foi feita a publicação:
 1. Na Railway, acesse **New Project → Deploy from GitHub repo** e selecione este repositório.
 2. A Railway encontra o `Dockerfile` na raiz, constrói a imagem e sobe o container.
 3. Em **Settings → Networking → Generate Domain**, gere o domínio público apontando para a porta `8080`.
-4. Cada push na `main` gera uma nova publicação automaticamente.
+4. Para publicar uma nova versão depois de um push, selecione o serviço na Railway e use a opção **Deploy latest commit**.
 
 A aplicação usa a porta definida na variável `PORT` (padrão `8080`), que a Railway configura automaticamente. Os dados ficam em memória, então a cada nova publicação o acervo volta aos três livros de exemplo.
 
